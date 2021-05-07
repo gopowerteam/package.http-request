@@ -1,4 +1,4 @@
-import Qs from 'qs'
+import { stringify } from 'qs'
 import { IRequestServerConfig } from './interfaces'
 import { RequestParams } from './request-params'
 import { RequestMethod } from './enums'
@@ -48,7 +48,7 @@ export class RequestOption {
             params: this.getParamsByMethod(true),
             // 序列化参数:用于GET请求
             paramsSerializer: (params: any) =>
-                Qs.stringify(params, {
+                stringify(params, {
                     arrayFormat: 'repeat',
                     skipNulls: true,
                     allowDots: true

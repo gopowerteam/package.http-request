@@ -1,9 +1,13 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "dist",
     "README.md"
+  ],
+  "keywords": [
+    "gopowerteam",
+    "http-request"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -33,6 +37,7 @@
     "uuidjs": "^4.2.8"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^18.1.0",
     "@rollup/plugin-typescript": "^8.2.1",
     "axios-mock-adapter": "^1.19.0",
     "rimraf": "^3.0.2",
