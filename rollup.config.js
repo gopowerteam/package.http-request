@@ -1,7 +1,5 @@
 // rollup.config.js
 import typescript from "@rollup/plugin-typescript";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
 
 export default [
   {
@@ -19,12 +17,6 @@ export default [
 ].map((output) => ({
   input: "src/index.ts",
   output,
-  plugins: [
-    typescript(),
-    commonjs({
-      dynamicRequireTargets: [
-        "node_modules/qs/*.js",
-      ],
-    })
-  ],
+  external: ["qs", "axios", "rxjs", "class-transformer", "uuidjs"],
+  plugins: [typescript()],
 }));
