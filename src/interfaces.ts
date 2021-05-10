@@ -5,7 +5,7 @@ import { RequestMethod } from './enums'
  */
 export interface IRequestServerConfig {
     service?: string
-    controller: string
+    controller?: string
     action?: string
     type: RequestMethod
     path: string
