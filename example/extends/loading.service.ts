@@ -42,4 +42,11 @@ export class LoadingService extends ExtendService {
             clearTimeout(this.timeout)
         }
     }
+
+    /**
+     * 请求失败了也要让loading结束
+     */
+    public error = () =>{
+        this.after()
+    }
 }
