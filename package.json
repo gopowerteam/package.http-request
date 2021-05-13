@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "files": [
     "dist",
     "README.md"
@@ -27,7 +27,8 @@
     "prebuild": "rimraf dist",
     "build": "npx rollup -c ./rollup.config.js && npm run build:type",
     "build:type": "tsc --declaration --emitDeclarationOnly --esModuleInterop --outDir dist/types",
-    "dev": "ts-node -P ./example/tsconfig.json ./example/index.ts"
+    "dev": "ts-node -P ./example/tsconfig.json ./example/index.ts",
+    "publish-npm":"npm run build && npm publish --access publish"
   },
   "dependencies": {
     "axios": "^0.21.1",

@@ -1,4 +1,4 @@
-import { ExtendService } from '../../src'
+import { ExtendService, RequestParams } from '../../src'
 
 export class PageService extends ExtendService {
     public default = {
@@ -23,7 +23,7 @@ export class PageService extends ExtendService {
         this.pageSizeOpts = this.default.pageSizeOpts
     }
 
-    public before = params => {
+    public before = (params) => {
         params.data = {
             ...params.data,
             size: this.pageSize,
@@ -31,7 +31,7 @@ export class PageService extends ExtendService {
         }
     }
 
-    public after = (response: any, params) => {
+    public after = (response: any, params: RequestParams) => {
         this.total = response.totalElements
     }
 

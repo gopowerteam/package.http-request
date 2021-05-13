@@ -71,11 +71,11 @@ export class RequestObject {
                     let data = response
 
                     // 应用扩展
-                    for (const service of requestParams.getExtendService()) {
+                    requestParams.getExtendService().forEach(service =>
                         service.after && service.after(data, requestParams)
-                    }
+                    )
 
-                    if (requestParams.options.page) {
+                    if (requestParams.getOptions('page')) {
                         data = data.content
                     }
 
@@ -83,14 +83,23 @@ export class RequestObject {
                     this.requestObserver.next(data)
                     this.requestObserver.complete()
                 })
-                .finally(() => {
-                    // 重置通讯状态
-                    this.requestState = RequestState.Ready
-                })
                 .catch(response => {
+                    // 执行扩展服务catch
+                    requestParams.getExtendService().forEach(service =>
+                        service.catch && service.catch(requestParams)
+                    )
                     // 打印异常结果
                     // 通讯结果异常
                     this.requestObserver.error(response.data)
+
+                })
+                .finally(() => {
+                    // 执行扩展服务finally
+                    requestParams.getExtendService().forEach(service =>
+                        service.finally && service.finally(requestParams)
+                    )
+                    // 重置通讯状态
+                    this.requestState = RequestState.Ready
                 })
 
             // 返回观察对象

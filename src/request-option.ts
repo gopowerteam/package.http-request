@@ -30,9 +30,9 @@ export class RequestOption {
      */
     public getOptions() {
         // 应用扩展
-        for (const service of this.requestParams.getExtendService()) {
+        this.requestParams.getExtendService().forEach(service =>
             service.before && service.before(this.requestParams)
-        }
+        )
 
         return {
             url: RequestService.getRequestUrl
@@ -40,7 +40,7 @@ export class RequestOption {
                 : this.getRequestUrl(),
             headers: RequestService.getRequestHeader
                 ? RequestService.getRequestHeader(this)
-                : this.requestParams.options.header,
+                : this.requestParams.getOptions('header'),
             method: this.requestServer.type,
             // 获取post请求参数
             data: this.getParamsByMethod(false),
@@ -49,9 +49,11 @@ export class RequestOption {
             // 序列化参数:用于GET请求
             paramsSerializer: (params: any) =>
                 stringify(params, {
-                    arrayFormat: 'repeat',
+                    arrayFormat: 'indices',
                     skipNulls: true,
-                    allowDots: true
+                    allowDots: true,
+                    encodeValuesOnly: true,
+                    encode: true
                 })
         }
     }
@@ -69,8 +71,8 @@ export class RequestOption {
         // : baseUrl/service/controller/action/append
         let path = this.requestServer.path
 
-        if (this.requestParams.options.append) {
-            Object.entries(this.requestParams.options.append).forEach(
+        if (this.requestParams.getOptions('append')) {
+            Object.entries(this.requestParams.getOptions('append') as { [key: string]: string | number }).forEach(
                 ([key, value]) => {
                     path = path.replace(
                         `{${key}}`,
@@ -95,9 +97,9 @@ export class RequestOption {
 
         // 根据请求方式返回数据
         if (isGet) {
-            return this.filterEmptyData(this.requestParams.data)
+            return this.filterEmptyData(this.requestParams.getData())
         } else {
-            return { ...this.requestParams.data }
+            return { ...this.requestParams.getData() }
         }
     }
 

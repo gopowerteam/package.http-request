@@ -40,14 +40,14 @@ export class SortService extends ExtendService {
         }
     }
 
-    public before = params => {
+    public before(params) {
         params.data = {
             ...params.data,
             sort: this.stringify(this.sort)
         }
     }
 
-    public after = (data: any, params) => {
+    public after(data: any, params) {
         //
     }
 

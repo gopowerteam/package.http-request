@@ -10,4 +10,8 @@ export class TokenService extends ExtendService {
             params.options.header['X-UserID'] = userid
         }
     }
+
+    public after = () => {
+        // DO after
+    }
 }

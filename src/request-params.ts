@@ -9,8 +9,8 @@ import { classToPlain } from 'class-transformer'
  * 请求参数对象
  */
 export class RequestParams {
-    public data?: any
-    public options: IRequestParamsOption
+    private data?: { [key: string]: any }
+    private options: IRequestParamsOption
     private requestObject!: RequestObject
     /**
      * 构造函数
@@ -20,6 +20,39 @@ export class RequestParams {
     constructor(data?: any, options?: IRequestParamsOption) {
         this.data = data instanceof Model ? classToPlain(data) : data || {}
         this.options = options || {}
+    }
+
+    /**
+     * 设置请求参数
+     * @param data 
+     */
+    public setData(data) {
+        this.data = data instanceof Model ? classToPlain(data) : data || {}
+    }
+
+    /**
+     * 获取请求参数
+     * @param data 
+     * @returns 
+     */
+    public getData() {
+        return this.data
+    }
+
+    /**
+     * 设置请求配置
+     * @param options 
+     */
+    public setOptions(options) {
+        this.options = options || {}
+    }
+
+    /**
+     * 获取请求配置
+     * @returns 
+     */
+    public getOptions(key?: string) {
+        return key ? this.options[key] : this.options
     }
 
     /**
@@ -33,7 +66,7 @@ export class RequestParams {
     /**
      * 获取扩展服务
      */
-    public getExtendService() {
+    public getExtendService(): ExtendService[] {
         const extendServices = this.options
             ? Object.values(this.options).filter(
                 service => service instanceof ExtendService
