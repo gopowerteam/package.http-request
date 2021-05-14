@@ -4,14 +4,13 @@ import { RequestOption } from './request-option'
 import { IRequestServerConfig } from './interfaces'
 import { RequestState } from './enums'
 import { RequestService } from './request-service'
-import * as UUID from 'uuidjs'
 
 /**
  * 请求对象
  */
 export class RequestObject {
     // 请求对象id
-    public readonly id
+    public readonly id: string
 
     // 请求观察对象
     public readonly requestObservable: any
@@ -31,7 +30,7 @@ export class RequestObject {
      */
     constructor(requestServer: IRequestServerConfig) {
         // 生成请求对象id
-        this.id = UUID.generate()
+        this.id = Math.random().toString(32).slice(2)
         // 设置请求服务对象
         this.requestServer = requestServer
         // 设置可观察对象

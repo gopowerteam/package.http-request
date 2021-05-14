@@ -17,6 +17,6 @@ export default [
 ].map((output) => ({
   input: "src/index.ts",
   output,
-  external: ["qs", "axios", "rxjs", "class-transformer", "uuidjs"],
+  external: ["qs", "axios", "rxjs", "class-transformer"],
   plugins: [typescript()],
 }));

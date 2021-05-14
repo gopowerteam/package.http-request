@@ -4,10 +4,14 @@ import { RequestInterceptor } from './request-interceptor'
 import { ExtendService } from './extend-service'
 export class RequestService {
     // 基础服务配置
-    public static config = {
-        server: '',
-        timeout: 1000 * 60 * 15
-    }
+    public static config: {
+        server: string,
+        timeout?: number,
+        adapter: any
+    } = {
+            server: '',
+            adapter: null
+        }
 
     // 通讯服务单例
     private static instance: RequestService
@@ -44,13 +48,16 @@ export class RequestService {
      */
     public static setConfig({
         server,
-        timeout
+        timeout,
+        adapter
     }: {
         server: string
-        timeout: number
+        timeout?: number
+        adapter?: any
     }): void {
         RequestService.config.server = server
         RequestService.config.timeout = timeout
+        RequestService.config.adapter = adapter
     }
 
     /**
@@ -80,6 +87,10 @@ export class RequestService {
      */
     constructor() {
         RequestService.instance = this
+
+        if (RequestService.config.adapter) {
+            axios.defaults.adapter = RequestService.config.adapter
+        }
 
         // 创建axios实例
         this.axiosInstance = axios.create({

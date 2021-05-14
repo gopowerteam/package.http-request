@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "files": [
     "dist",
     "README.md"
@@ -28,14 +28,12 @@
     "build": "npx rollup -c ./rollup.config.js && npm run build:type",
     "build:type": "tsc --declaration --emitDeclarationOnly --esModuleInterop --outDir dist/types",
     "dev": "ts-node -P ./example/tsconfig.json ./example/index.ts",
-    "publish-npm":"npm run build && npm publish --access publish"
+    "publish-npm": "npm run build && npm publish --access publish"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "class-transformer": "^0.4.0",
-    "qs": "^6.10.1",
-    "rxjs": "^7.0.0",
-    "uuidjs": "^4.2.8"
+    "qs": "^6.10.1"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.1",
@@ -43,7 +41,14 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "axios": "^0.21.1",
+    "class-transformer": "^0.4.0",
+    "qs": "^6.10.1",
+    "rxjs": "^7.0.0"
+  },
+  "peerDependencies": {
+    "rxjs": "^7.0.0"
   },
   "repository": {
     "type": "git",
