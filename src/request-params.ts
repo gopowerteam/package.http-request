@@ -39,6 +39,13 @@ export class RequestParams {
         return this.data
     }
 
+    /** 
+     * 获取RequestObject
+     */
+    public getRequestObject() {
+        return this.requestObject
+    }
+
     /**
      * 设置请求配置
      * @param options 
