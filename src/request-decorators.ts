@@ -34,7 +34,7 @@ export function Request({
 
         // 传入请求方法
         descriptor.value = (requestParams: RequestParams) => {
-            if (force) {
+            if (force || requestParams.getOptions('force') === true) {
                 requestParams.setRequestObject(generateRequestObject())
             } else {
                 // 设置请求对象
