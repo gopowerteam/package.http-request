@@ -92,7 +92,7 @@ export class RequestOption {
     private getParamsByMethod(isGet: boolean) {
         // 请求返回非当前请求方式则返回{}
         if (this.isGetMethod() !== isGet) {
-            return {}
+            return isGet ? { ...this.requestParams?.getOptions()?.urlParams } : {}
         }
 
         // 根据请求方式返回数据

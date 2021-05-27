@@ -15,6 +15,7 @@ export interface IRequestServerConfig {
  * 请求选项接口
  */
 export interface IRequestParamsOption {
+    urlParams?: { [key: string]: any }
     append?: { [key: string]: string | number }
     header?: any
     [propName: string]: any
