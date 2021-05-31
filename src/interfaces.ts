@@ -1,3 +1,4 @@
+import { ResponseType } from 'axios';
 import { RequestMethod } from './enums'
 
 /**
@@ -17,6 +18,10 @@ export interface IRequestServerConfig {
 export interface IRequestParamsOption {
     urlParams?: { [key: string]: any }
     append?: { [key: string]: string | number }
-    header?: any
+    header?: any,
+    /**
+     * 返回数据类型
+     */
+    responseType?: ResponseType,
     [propName: string]: any
 }

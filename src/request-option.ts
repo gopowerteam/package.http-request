@@ -41,6 +41,7 @@ export class RequestOption {
             headers: RequestService.getRequestHeader
                 ? RequestService.getRequestHeader(this)
                 : this.requestParams.getOptions('header'),
+            responseType: this.requestParams.getOptions('responseType'),
             method: this.requestServer.type,
             // 获取post请求参数
             data: this.getParamsByMethod(false),
