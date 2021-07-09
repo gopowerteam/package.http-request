@@ -33,6 +33,9 @@ export class RequestOption {
         this.requestParams.getExtendService().forEach(service =>
             service.before && service.before(this.requestParams)
         )
+        
+        // 获取自定义的数组格式化方式
+        const formatType = this.requestParams.getOptions('format') || 'indices';
 
         return {
             url: RequestService.getRequestUrl
@@ -50,7 +53,7 @@ export class RequestOption {
             // 序列化参数:用于GET请求
             paramsSerializer: (params: any) =>
                 stringify(params, {
-                    arrayFormat: 'indices',
+                    arrayFormat: formatType,
                     skipNulls: true,
                     allowDots: true,
                     encodeValuesOnly: true,
