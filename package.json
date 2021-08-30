@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "files": [
     "dist",
     "README.md"
@@ -50,6 +50,9 @@
   },
   "peerDependencies": {
     "rxjs": "^7.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
