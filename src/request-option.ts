@@ -87,7 +87,14 @@ export class RequestOption {
     }
 
     // 组合为url形式
-    return `${this.requestServer.service || ""}${path}`;
+    return [
+      this.requestServer.gateway ?? "",
+      this.requestServer.service ?? "",
+      path,
+    ]
+      .filter((v) => !!v)
+      .join("/")
+      .replace(/\/\//g, "/");
   }
 
   /**

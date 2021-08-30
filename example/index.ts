@@ -8,7 +8,7 @@ const mock = new MockAdapter(axios);
 
 // 配置服务端信息
 RequestService.setConfig({
-  server: "/api",
+  gateway: "/api",
   timeout: 3000,
 });
 

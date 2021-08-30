@@ -4,6 +4,7 @@ import { RequestMethod } from './enums'
  * 服务配置接口
  */
 export interface IRequestServerConfig {
+    gateway?:string
     service?: string
     controller?: string
     action?: string
