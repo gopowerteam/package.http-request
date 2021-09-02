@@ -44,6 +44,7 @@ export class RequestOption {
         ? RequestService.getRequestHeader(this)
         : this.requestParams.getOptions("header"),
       method: this.requestServer.type,
+      baseUrl: this.requestServer.gateway,
       // 获取post请求参数
       data: this.getParamsByMethod(false),
       // 获取get请求参数
@@ -87,11 +88,7 @@ export class RequestOption {
     }
 
     // 组合为url形式
-    return [
-      this.requestServer.gateway ?? "",
-      this.requestServer.service ?? "",
-      path,
-    ]
+    return [this.requestServer.service ?? "", path]
       .filter((v) => !!v)
       .join("/")
       .replace(/\/\//g, "/");
