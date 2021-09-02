@@ -44,7 +44,7 @@ export class RequestOption {
         ? RequestService.getRequestHeader(this)
         : this.requestParams.getOptions("header"),
       method: this.requestServer.type,
-      baseUrl: this.requestServer.gateway,
+      baseURL: this.requestServer.gateway,
       // 获取post请求参数
       data: this.getParamsByMethod(false),
       // 获取get请求参数
