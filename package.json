@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "files": [
     "dist",
     "vite-plugin.d.ts",
@@ -19,7 +19,7 @@
       "require": "./dist/index.umd.js"
     },
     "./dist/": "./dist/",
-    "./vite-plugin": "./dist/vite.plugin.js"
+    "./vite-plugin": "./dist/plugins/vite.plugin.js"
   },
   "author": {
     "name": "zhuchentong",
