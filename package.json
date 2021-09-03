@@ -1,8 +1,9 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "files": [
     "dist",
+    "vite-plugin.d.ts",
     "README.md"
   ],
   "keywords": [
@@ -16,9 +17,9 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     },
-    "./dist/": "./dist/"
+    "./dist/": "./dist/",
+    "./vite-plugin": "./dist/vite.plugin.js"
   },
-  "types": "./dist/types/index.d.ts",
   "author": {
     "name": "zhuchentong",
     "email": "2037630@gmail.com"
@@ -26,7 +27,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npx rollup -c ./rollup.config.js && npm run build:type",
-    "build:type": "tsc --declaration --emitDeclarationOnly --esModuleInterop --outDir dist/types",
+    "build:type": "tsc --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
     "dev": "ts-node -P ./example/tsconfig.json ./example/index.ts",
     "publish-npm": "npm run build && npm publish --access publish"
   },
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.1",
+    "@types/node": "^16.7.10",
     "axios": "^0.21.1",
     "axios-mock-adapter": "^1.19.0",
     "class-transformer": "^0.4.0",
@@ -46,7 +48,8 @@
     "rollup": "^2.47.0",
     "rxjs": "^7.0.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "vite": "^2.5.3"
   },
   "peerDependencies": {
     "rxjs": "^7.0.0"
