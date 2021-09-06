@@ -44,7 +44,7 @@ export class RequestOption {
         ? RequestService.getRequestHeader(this)
         : this.requestParams.getOptions("header"),
       method: this.requestServer.type,
-      baseURL: this.requestServer.gateway,
+      baseURL: this.getRequestGateway(),
       // 获取post请求参数
       data: this.getParamsByMethod(false),
       // 获取get请求参数
@@ -92,6 +92,26 @@ export class RequestOption {
       .filter((v) => !!v)
       .join("/")
       .replace(/\/\//g, "/");
+  }
+
+  /**
+   * 获取请求网关地址
+   * @returns
+   */
+  private getRequestGateway() {
+    if (this.requestServer.gateway) {
+      if (typeof RequestService.config.gateway === "string") {
+        throw Error("网络配置Gateway错误");
+      }
+
+      return RequestService.config.gateway[this.requestServer.gateway];
+    }
+
+    if (typeof RequestService.config.gateway === "object") {
+      throw Error("网络配置Gateway错误");
+    }
+
+    return RequestService.config.gateway;
   }
 
   /**

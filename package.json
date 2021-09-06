@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "files": [
     "dist",
     "vite-plugin.d.ts",

@@ -6,7 +6,7 @@ import { IStringifyOptions } from "qs";
 export class RequestService {
   // 基础服务配置
   public static config: {
-    gateway?: string;
+    gateway: string | { [key: string]: string };
     timeout?: number;
     adapter?: any;
     qs?: IStringifyOptions;
@@ -54,7 +54,7 @@ export class RequestService {
     adapter,
     qs,
   }: {
-    gateway?: string;
+    gateway: string | { [key: string]: string };
     timeout?: number;
     adapter?: any;
     qs?: IStringifyOptions;
@@ -99,7 +99,6 @@ export class RequestService {
 
     // 创建axios实例
     this.axiosInstance = axios.create({
-      baseURL: RequestService.config.gateway,
       timeout: RequestService.config.timeout,
       headers: {
         "Content-Type": "application/json",
