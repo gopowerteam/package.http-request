@@ -1,1 +1,1 @@
-export abstract class Model {}
+export class Model {}
