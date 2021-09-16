@@ -44,10 +44,8 @@ export function Request({
     descriptor.value = (params?: RequestParams | { [key: string]: any }) => {
       const requestParams = RequestParams.create(params);
 
-      const currentRequestObject = getRequestObject(requestParams);
-
       // 设置请求对象
-      requestParams.setRequestObject(requestObject);
+      requestParams.setRequestObject(getRequestObject(requestParams));
 
       // 传入更新后的请求对象
       return _value.call(target, requestParams);
