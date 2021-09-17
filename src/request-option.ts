@@ -125,7 +125,10 @@ export class RequestOption {
 
     // 根据请求方式返回数据
     if (isGet) {
-      return this.filterEmptyData(this.requestParams.getData());
+      return this.filterEmptyData({
+        ...this.requestParams.getData(),
+        ...this.requestParams?.getOptions("urlParams"),
+      });
     } else {
       return { ...this.requestParams.getData() };
     }
