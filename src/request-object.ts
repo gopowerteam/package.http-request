@@ -4,7 +4,7 @@ import { RequestOption } from "./request-option";
 import { IRequestServerConfig } from "./interfaces";
 import { RequestState } from "./enums";
 import { RequestService } from "./request-service";
-import { plainToClass } from "class-transformer";
+import { plainToInstance } from "class-transformer";
 
 /**
  * 请求对象
@@ -90,7 +90,7 @@ export class RequestObject {
 
           // 数据模型
           if (this.responseModel) {
-            data = plainToClass(this.responseModel, data);
+            data = plainToInstance(this.responseModel, data);
           }
 
           // 通讯结果正常

@@ -4,7 +4,7 @@ import { Model } from "./request-modal";
 import { Observable } from "rxjs";
 import { RequestService } from "./request-service";
 import { ExtendService } from "./extend-service";
-import { classToPlain } from "class-transformer";
+import { instanceToPlain } from "class-transformer";
 /**
  * 请求参数对象
  */
@@ -19,7 +19,7 @@ export class RequestParams {
    */
   constructor(options?: IRequestParamsOption) {
     const { data } = options || {};
-    this.data = data instanceof Model ? classToPlain(data) : data || {};
+    this.data = data instanceof Model ? instanceToPlain(data) : data || {};
     this.options = options || {};
   }
 
@@ -41,7 +41,7 @@ export class RequestParams {
    * @param data
    */
   public setData(data) {
-    this.data = data instanceof Model ? classToPlain(data) : data || {};
+    this.data = data instanceof Model ? instanceToPlain(data) : data || {};
   }
 
   /**
