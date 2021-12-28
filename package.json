@@ -1,6 +1,6 @@
 {
   "name": "@gopowerteam/http-request",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "files": [
     "dist",
     "vite-plugin.d.ts",
@@ -36,7 +36,8 @@
     "@types/qs": "6.9.7",
     "axios": "0.24.0",
     "class-transformer": "0.5.1",
-    "qs": "6.10.1"
+    "qs": "6.10.1",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "8.3.0",
