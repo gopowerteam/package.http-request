@@ -97,7 +97,7 @@ export class RequestObject {
           this.requestObserver.next(data);
           this.requestObserver.complete();
         })
-        .catch((response) => {
+        .catch(({ response }) => {
           // 执行扩展服务catch
           requestParams
             .getExtendService()
